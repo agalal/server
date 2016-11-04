@@ -27,6 +27,7 @@ use OCA\Theming\ImageManager;
 use OCA\Theming\ThemingDefaults;
 use OCP\AppFramework\Controller;
 use OCP\AppFramework\Http;
+use OCP\AppFramework\Http\Response;
 use OCP\AppFramework\Http\DataDisplayResponse;
 use OCP\AppFramework\Http\FileDisplayResponse;
 use OCP\AppFramework\Utility\ITimeFactory;
@@ -131,7 +132,7 @@ class IconController extends Controller {
 			$response->addHeader('Expires', $expires->format(\DateTime::RFC2822));
 			$response->addHeader('Pragma', 'cache');
 		} else {
-			$response = new DataDisplayResponse(null, Http::STATUS_NOT_FOUND);
+			$response = new Response(null, Http::STATUS_NOT_FOUND);
 			$response->cacheFor(0);
 			$response->setLastModified(new \DateTime('now', new \DateTimeZone('GMT')));
 		}
@@ -163,7 +164,7 @@ class IconController extends Controller {
 			$response->addHeader('Expires', $expires->format(\DateTime::RFC2822));
 			$response->addHeader('Pragma', 'cache');
 		} else {
-			$response = new DataDisplayResponse(null, Http::STATUS_NOT_FOUND);
+			$response = new Response(null, Http::STATUS_NOT_FOUND);
 			$response->cacheFor(0);
 			$response->setLastModified(new \DateTime('now', new \DateTimeZone('GMT')));
 		}
